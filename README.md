@@ -13,6 +13,7 @@ how many points out of 20 do you deserve on this assignment: 20/20
 
 ## Self-Reflection:
 <!-- Write your self-reflection under this line -->
+I struggled a bit with last week's project, but feel I did much better this week.  I use API end points at work on a daily basis, so it was very cool to see some of the behind the scenes functionality.  Learning more about CSS via bootstrap is really intriguing as well.
 
 ### How long it took me to finish this?
 ~4 hours
