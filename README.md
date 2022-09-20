@@ -9,7 +9,7 @@ Instructions to this assignment can be found [here](https://it3049c.github.io/co
 
 ## Self-Evaluation:
 
-how many points out of 20 do you deserve on this assignment: 
+how many points out of 20 do you deserve on this assignment: 20/20
 
 ## Self-Reflection:
 <!-- Write your self-reflection under this line -->
