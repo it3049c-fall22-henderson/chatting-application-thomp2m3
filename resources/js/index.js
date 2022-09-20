@@ -6,7 +6,7 @@ const chatBox = document.getElementById("chat");
 const serverURL = 'https://it3049-c-chat-application.herokuapp.com/messages';
 
 //Initial call
-updateMessages();
+updateMessages()
 
 //Calling updateMessages every 10 seconds to populate new messages
 const MILLISECONDS_IN_TEN_SECONDS = 10000;
@@ -24,14 +24,14 @@ sendButton.addEventListener("click", function(sendButtonClickEvent) {
 
 //Update messages inside the chatbox
 function updateMessagesInChatBox() {
-  updateMessages();
-};
+  updateMessages()
+}
 
 //API requests to server
 function fetchMessages() {
   return fetch(serverURL)
-    .then(response => response.json())
-};
+    .then( response => response.json())
+}
 
 //Update Messages
 async function updateMessages() {
@@ -46,7 +46,7 @@ async function updateMessages() {
 
   //Add to the chatbox
   chatBox.innerHTML = formattedMessages;
-};
+}
 
 
 
@@ -95,4 +95,4 @@ function sendMessages(username, text) {
     },
     body: JSON.stringify(newMessage)
   });
-};
+}
