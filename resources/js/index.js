@@ -5,6 +5,9 @@ const sendButton = document.getElementById("send-button");
 const chatBox = document.getElementById("chat");
 const serverURL = 'https://it3049-c-chat-application.herokuapp.com/messages';
 
+//Initial call
+updateMessages();
+
 //Calling updateMessages every 10 seconds to populate new messages
 const MILLISECONDS_IN_TEN_SECONDS = 10000;
 setInterval(updateMessages, MILLISECONDS_IN_TEN_SECONDS);
