@@ -4,10 +4,31 @@ const myMessage = document.getElementById("my-message");
 const sendButton = document.getElementById("send-button");
 const chatBox = document.getElementById("chat");
 const serverURL = 'https://it3049-c-chat-application.herokuapp.com/messages';
-const MILLISECONDS_IN_TEN_SECONDS = 10000;
 
 //Calling updateMessages every 10 seconds to populate new messages
+const MILLISECONDS_IN_TEN_SECONDS = 10000;
 setInterval(updateMessages, MILLISECONDS_IN_TEN_SECONDS);
+
+//EventListener for sendButton
+sendButton.addEventListener("click", function(sendButtonClickEvent) {
+  sendButtonClickEvent.preventDefault();
+  const sender = nameInput.value;
+  const message = myMessage.value;
+
+  sendMessages(sender,message);
+  myMessage.value = "";
+});
+
+//Update messages inside the chatbox
+function updateMessagesInChatBox() {
+  updateMessages();
+};
+
+//API requests to server
+function fetchMessages() {
+  return fetch(serverURL)
+    .then(response => response.json())
+};
 
 //Update Messages
 async function updateMessages() {
@@ -22,18 +43,14 @@ async function updateMessages() {
 
   //Add to the chatbox
   chatBox.innerHTML = formattedMessages;
-}
+};
 
-//API requests to server
-function fetchMessages() {
-  return fetch(serverURL)
-    .then(response => response.json())
-}
+
 
 //Formatting message
 function formatMessage(message, myNameInput) {
   const time = new Date(message.timestamp);
-  const formattedTime = '${time.getHours()}:${time.getMinutes()}';
+  const formattedTime = `${time.getHours()}:${time.getMinutes()}`;
 
   if (myNameInput === message.sender) {
     return `
@@ -58,7 +75,7 @@ function formatMessage(message, myNameInput) {
     </div>
     `
   }
-}
+};
 
 //Send Messages
 function sendMessages(username, text) {
@@ -75,14 +92,4 @@ function sendMessages(username, text) {
     },
     body: JSON.stringify(newMessage)
   });
-}
-
-//EventListener for sendButton
-sendButton.addEventListener("click", function(sendButtonClickEvent) {
-  sendButtonClickEvent.preventDefault();
-  const sender = nameInput.value;
-  const message = myMessage.value;
-
-  sendMessages(sender,message);
-  myMessage.value = "";
-})
+};
