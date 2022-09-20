@@ -78,7 +78,7 @@ function formatMessage(message, myNameInput) {
     </div>
     `
   }
-};
+}
 
 //Send Messages
 function sendMessages(username, text) {
