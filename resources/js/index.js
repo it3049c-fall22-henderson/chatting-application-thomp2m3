@@ -4,6 +4,7 @@ const myMessage = document.getElementById("my-message");
 const sendButton = document.getElementById("send-button");
 const chatBox = document.getElementById("chat");
 const serverURL = `https://it3049c-chat-application.herokuapp.com/messages`;
+const saveName = document.getElementById("save-name-button");
 
 //Initial call
 updateMessages()
@@ -11,6 +12,15 @@ updateMessages()
 //Calling updateMessages every 10 seconds to populate new messages
 const MILLISECONDS_IN_TEN_SECONDS = 10000;
 setInterval(updateMessages, MILLISECONDS_IN_TEN_SECONDS);
+
+//GET user's name input from local storage and display
+const lsName = localStorage.getItem("user");
+if (lsName != null && lsName.length > 0) {
+  nameInput.value = lsName;
+  myMessage.removeAttribute("disabled");
+} else {
+  myMessage.setAttribute("disabled", '');
+};
 
 //EventListener for sendButton
 sendButton.addEventListener("click", function(sendButtonClickEvent) {
@@ -20,6 +30,16 @@ sendButton.addEventListener("click", function(sendButtonClickEvent) {
 
   sendMessages(sender,message);
   myMessage.value = "";
+});
+
+//SET user's name input to local storage
+saveName.addEventListener("click", function(){
+  localStorage.setItem("user", nameInput.value);
+  if (nameInput.value.length > 0) {
+    myMessage.removeAttribute("disabled");
+  } else {
+    myMessage.setAttribute("disabled", '');
+  }
 });
 
 //Update messages inside the chatbox
